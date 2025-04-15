@@ -1,4 +1,4 @@
-🧾 Project Assignment: Currency Exchange Dashboard
+# Currency Exchange Dashboard
 # Your Task
 Third-party APIs allow developers to build dynamic tools with real-time data. Your challenge is to build a currency exchange dashboard that displays live exchange rates between various currencies. The application will retrieve data using an API and update the UI dynamically based on user input.
 
