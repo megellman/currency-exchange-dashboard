@@ -359,18 +359,28 @@
             <h2 id="currency-val_2" class="text-center"></h2>
         </div>
         <div class="col">
-            <button class=" mx-2" type="submit">
+            <button id="convert-btn" class=" mx-2" type="submit">
                 Convert
             </button>
-            <button id="save-btn" style="display: none;" type=" ">
-                Save
-            </button>
+            
         </div>
     </form>
+    <button id="save-btn" style="display: block;" type=" ">
+                Save
+            </button>
     <h4 class="text-center text-muted mt-4" id="currency-rate-display"></h4>
 
     <table id="exchange-rate-dashboard" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Currency 1</th>
+                <th scope="col">Currency 2</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody id="dashboard-body">
 
+        </tbody>
     </table>
     <script src="./assets/js/script.js"></script>
 </body>

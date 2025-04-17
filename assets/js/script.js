@@ -2,6 +2,7 @@ let currencyForm = document.querySelector('#currency-form');
 let apiKey = '584b93e1a2a3f8d7ca80cffe';
 let currencyDisplay = document.querySelector('#currency-rate-display');
 let saveBtn = document.querySelector('#save-btn');
+let dashboardBody = document.querySelector('#dashboard-body');
 
 currencyForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -40,7 +41,36 @@ async function getConversion(val_1, currency_2El, currency_1) {
 
         // saveBtn display toggle ON
         saveBtn.setAttribute('style', 'display:inline-block');
+        saveBtn.addEventListener('click', function(){
+            console.log('here')
+            let tableRow = document.createElement('tr');
+            
+        
+            let currency_1_dashboard = document.createElement('td');
+            let currency_2_dashboard = document.createElement('td');
+            let deleteBtn = document.createElement('button');
+        
+            currency_1_dashboard.textContent = currency_1;
+            currency_2_dashboard.textContent = currency_2;
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.setAttribute('onclick', ' return this.parentNode.remove()');
+        
+            tableRow.append(currency_1_dashboard);
+            tableRow.append(currency_2_dashboard);
+            tableRow.append(deleteBtn);
+            dashboardBody.append(tableRow);
+        })
     } catch (error) {
         console.error(error.message);
     }
 }
+
+dashboardBody.addEventListener('click', function(e){
+    e.stopPropagation();
+    let currency_1 =  e.target.parentNode.children[0].textContent;
+    let currency_2 = e.target.parentNode.children[1].textContent;
+    
+
+    document.getElementById('currency_1').value = currency_1;
+    document.getElementById('currency_2').value = currency_2;
+})
