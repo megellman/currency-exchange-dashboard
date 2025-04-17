@@ -17,7 +17,7 @@
             </h1>
         </header>
     </div>
-    <div class="row">
+    <div id="currency-form" class="row mx-auto w-75 mt-3">
         <div class="col">
             <select class="form-select" data-live-search="true" data-live-search-style="startsWith" aria-label="Default select example">
                 <option selected>Select a Currency</option>
@@ -355,15 +355,17 @@
 
             </select>
         </div>
-        <div class="col">
-            <input type="text" class="form-control" placeholder="45" aria-label="currency_1">
+        <div class="col border-bottom">
+            <h2 id="currency_2" class="text-center">34</h2>
         </div>
         <div class="col">
-            <button type="submit">
+            <button class="row m-2" type="submit">
                 Convert
             </button>
         </div>
     </div>
+    <h4 class="text-center text-muted mt-4" id="conversion-rate">1 USD = 1.38 CAD</h4>
+
     <table id="exchange-rate-dashboard" class="table">
 
     </table>
