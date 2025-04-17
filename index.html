@@ -17,9 +17,9 @@
             </h1>
         </header>
     </div>
-    <div id="currency-form" class="row mx-auto w-75 mt-3">
+    <form id="currency-form" class="row mx-auto w-75 mt-3">
         <div class="col">
-            <select class="form-select" data-live-search="true" data-live-search-style="startsWith" aria-label="Default select example">
+            <select class="form-select" id="currency_1" data-live-search="true" data-live-search-style="startsWith" aria-label="Default select example">
                 <option selected>Select a Currency</option>
                 <option value="AED">United Arab Emirates</option>
                 <option value="AFN">Afghan Afghani</option>
@@ -186,10 +186,10 @@
             </select>
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="45" aria-label="currency_1">
+            <input type="text" class="form-control" placeholder="45" aria-label="currency-val_1" id="currency-val_1">
         </div>
         <div class="col">
-            <select class="form-select" data-live-search="true" data-live-search-style="startsWith" aria-label="Default select example">
+            <select class="form-select" id="currency_2" data-live-search="true" data-live-search-style="startsWith" aria-label="Default select example">
                 <option selected>Select a Currency</option>
                 <option value="AED">United Arab Emirates</option>
                 <option value="AFN">Afghan Afghani</option>
@@ -356,19 +356,23 @@
             </select>
         </div>
         <div class="col border-bottom">
-            <h2 id="currency_2" class="text-center">34</h2>
+            <h2 id="currency-val_2" class="text-center"></h2>
         </div>
         <div class="col">
-            <button class="row m-2" type="submit">
+            <button class=" mx-2" type="submit">
                 Convert
             </button>
+            <button id="save-btn" style="display: none;" type=" ">
+                Save
+            </button>
         </div>
-    </div>
-    <h4 class="text-center text-muted mt-4" id="conversion-rate">1 USD = 1.38 CAD</h4>
+    </form>
+    <h4 class="text-center text-muted mt-4" id="currency-rate-display">1 USD = 1.38 CAD</h4>
 
     <table id="exchange-rate-dashboard" class="table">
 
     </table>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
