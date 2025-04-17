@@ -22,6 +22,7 @@ async function getConversion(val_1, currency_2El, currency_1) {
     let url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${currency_1}`;
     try {
         const response = await fetch(url);
+        console.log('fetch called')
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
@@ -48,19 +49,7 @@ async function getConversion(val_1, currency_2El, currency_1) {
         console.error(error.message);
     }
 }
-saveBtn.addEventListener('click', () => saveData())
-
-dashboardBody.addEventListener('click', function (e) {
-    e.stopPropagation();
-    let currency_1 = e.target.parentNode.children[0].textContent;
-    let currency_2 = e.target.parentNode.children[1].textContent;
-
-
-    document.getElementById('currency_1').value = currency_1;
-    document.getElementById('currency_2').value = currency_2;
-})
-
-function saveData() {
+saveBtn.addEventListener('click', () => {
     console.log("saveData was triggered")
     let currency_1 = document.getElementById('currency_1').value;
     let currency_2 = document.querySelector('#currency_2').value;
@@ -81,7 +70,7 @@ function saveData() {
         localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
     }
 
-    if(isTableHidden){
+    if (isTableHidden) {
         table.setAttribute('style', 'visibility:visible');
         isTableHidden = false;
     }
@@ -96,11 +85,42 @@ function saveData() {
     currency_1_dashboard.textContent = currency_1;
     currency_2_dashboard.textContent = currency_2;
     deleteBtn.textContent = 'Delete';
-    deleteBtn.setAttribute('onclick', ' return this.parentNode.remove()');
+    deleteBtn.addEventListener('click', deleteRow);
 
     tableRow.append(currency_1_dashboard);
     tableRow.append(currency_2_dashboard);
     tableRow.append(deleteBtn);
     dashboardBody.append(tableRow);
-}
 
+})
+
+dashboardBody.addEventListener('click', function (e) {
+    e.stopPropagation();
+    let currency_1 = e.target.parentNode.children[0].textContent;
+    let currency_2 = e.target.parentNode.children[1].textContent;
+
+
+    document.getElementById('currency_1').value = currency_1;
+    document.getElementById('currency_2').value = currency_2;
+})
+
+function deleteRow(e) {
+    console.log('deleteRow function called')
+    e.target.parentNode.remove();
+    let dashboardData = JSON.parse(localStorage.getItem('dashboardData'));
+    let currentRow = {
+        currency1: e.target.parentNode.children[0].textContent,
+        currency2: e.target.parentNode.children[1].textContent
+    };
+    let index = dashboardData.findIndex(item =>
+        item.currency1 === currentRow.currency1 &&
+        item.currency2 === currentRow.currency2
+    );
+
+    if (index !== -1) {
+        dashboardData.splice(index, 1);
+        localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
+    }
+    localStorage.setItem(JSON.stringify(dashboardData));
+
+}
