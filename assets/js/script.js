@@ -3,6 +3,9 @@ let apiKey = '584b93e1a2a3f8d7ca80cffe';
 let currencyDisplay = document.querySelector('#currency-rate-display');
 let saveBtn = document.querySelector('#save-btn');
 let dashboardBody = document.querySelector('#dashboard-body');
+let table = document.querySelector('#exchange-rate-dashboard');
+
+let isTableHidden = true;
 
 currencyForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -37,10 +40,10 @@ async function getConversion(val_1, currency_2El, currency_1) {
         currency_2El.textContent = val_2;
 
         // update currency display 
-        currencyDisplay.textContent = `${val_1} ${currency_1} = ${val_2} ${currency_2}`
+        currencyDisplay.textContent = `1 ${currency_1} = ${val_2 * conversionRate} ${currency_2}`
 
         // saveBtn display toggle ON
-        saveBtn.setAttribute('style', 'display:inline-block');
+        saveBtn.setAttribute('style', 'visibility:visible');
     } catch (error) {
         console.error(error.message);
     }
@@ -76,6 +79,11 @@ function saveData() {
         dashboardData = JSON.parse(localStorage.getItem('dashboardData'));
         dashboardData.push(currencyData);
         localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
+    }
+
+    if(isTableHidden){
+        table.setAttribute('style', 'visibility:visible');
+        isTableHidden = false;
     }
 
     let tableRow = document.createElement('tr');
