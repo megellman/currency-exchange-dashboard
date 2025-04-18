@@ -4,6 +4,7 @@ let currencyDisplay = document.querySelector('#currency-rate-display');
 let saveBtn = document.querySelector('#save-btn');
 let dashboardBody = document.querySelector('#dashboard-body');
 let table = document.querySelector('#exchange-rate-dashboard');
+let switchBtn = document.querySelector('#switch-btn');
 
 let isTableHidden = true;
 
@@ -52,7 +53,7 @@ async function getConversion(val_1, currency_2El, currency_1) {
 saveBtn.addEventListener('click', () => {
     console.log("saveData was triggered")
     let currency_1 = document.getElementById('currency_1').value;
-    let currency_2 = document.querySelector('#currency_2').value;
+    let currency_2 = document.getElementById('currency_2').value;
 
     let currencyData = {
         currency1: currency_1,
@@ -143,6 +144,7 @@ function loadTableData() {
             currency_2_dashboard.textContent = x['currency2'];
             deleteBtn.textContent = 'Delete';
             deleteBtn.addEventListener('click', deleteRow);
+            deleteBtn.setAttribute('class', 'btn btn-light border border-secondary-subtle border-2');
 
             deleteCol.append(deleteBtn);
             tableRow.append(currency_1_dashboard);
@@ -152,5 +154,15 @@ function loadTableData() {
         })
     }
 }
+
+// switch currency select values on btn click
+switchBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    let currency_1 = document.getElementById('currency_1').value;
+    let currency_2 = document.getElementById('currency_2').value;
+
+    document.getElementById('currency_1').value = currency_2;
+    document.getElementById('currency_2').value = currency_1;
+})
 
 loadTableData();
