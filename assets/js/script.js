@@ -73,29 +73,22 @@ saveBtn.addEventListener('click', () => {
     if (isTableHidden) {
         table.setAttribute('style', 'visibility:visible');
         isTableHidden = false;
+    } else {
+        // clear the table to ensure we're not putting duplicate data in
+        while (dashboardBody.firstChild) {
+            dashboardBody.removeChild(dashboardBody.firstChild);
+        }
     }
-
-    let tableRow = document.createElement('tr');
-
-    
-    let currency_1_dashboard = document.createElement('td');
-    let currency_2_dashboard = document.createElement('td');
-    let deleteBtn = document.createElement('button');
-
-    currency_1_dashboard.textContent = currency_1;
-    currency_2_dashboard.textContent = currency_2;
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.addEventListener('click', deleteRow);
-
-    tableRow.append(currency_1_dashboard);
-    tableRow.append(currency_2_dashboard);
-    tableRow.append(deleteBtn);
-    dashboardBody.append(tableRow);
-
+    loadTableData();
 })
+
 // click on saved currency comparisons to load them on the form
 dashboardBody.addEventListener('click', function (e) {
     e.stopPropagation();
+    
+    // stops delete button from triggering this function
+    if(e.target.textContent === 'Delete') return; 
+
     let currency_1 = e.target.parentNode.children[0].textContent;
     let currency_2 = e.target.parentNode.children[1].textContent;
 
@@ -124,6 +117,35 @@ function deleteRow(e) {
         dashboardData.splice(index, 1);
         localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
     }
-    localStorage.setItem(JSON.stringify(dashboardData));
+    localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
 
 }
+
+function loadTableData() {
+    if (!(localStorage.getItem('dashboardData'))) {
+        console.log('no table data');
+    } else {
+        table.setAttribute('style', 'visibility:visible');
+        isTableHidden = false;
+        dashboardData = JSON.parse(localStorage.getItem('dashboardData'));
+        dashboardData.forEach((x) => {
+            let tableRow = document.createElement('tr');
+
+            let currency_1_dashboard = document.createElement('td');
+            let currency_2_dashboard = document.createElement('td');
+            let deleteBtn = document.createElement('button');
+
+            currency_1_dashboard.textContent = x['currency1'];
+            currency_2_dashboard.textContent = x['currency2'];
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.addEventListener('click', deleteRow);
+
+            tableRow.append(currency_1_dashboard);
+            tableRow.append(currency_2_dashboard);
+            tableRow.append(deleteBtn);
+            dashboardBody.append(tableRow);
+        })
+    }
+}
+
+loadTableData();
