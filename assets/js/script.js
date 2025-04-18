@@ -105,11 +105,11 @@ dashboardBody.addEventListener('click', function (e) {
 
 function deleteRow(e) {
     console.log('deleteRow function called')
-    e.target.parentNode.remove();
+    e.target.parentNode.parentNode.remove();
     let dashboardData = JSON.parse(localStorage.getItem('dashboardData'));
     let currentRow = {
-        currency1: e.target.parentNode.children[0].textContent,
-        currency2: e.target.parentNode.children[1].textContent
+        currency1: e.target.parentNode.parentNode.children[0].textContent,
+        currency2: e.target.parentNode.parentNode.children[1].textContent
     };
     let index = dashboardData.findIndex(item =>
         item.currency1 === currentRow.currency1 &&
@@ -136,6 +136,7 @@ function loadTableData() {
 
             let currency_1_dashboard = document.createElement('td');
             let currency_2_dashboard = document.createElement('td');
+            let deleteCol = document.createElement('td');
             let deleteBtn = document.createElement('button');
 
             currency_1_dashboard.textContent = x['currency1'];
@@ -143,9 +144,10 @@ function loadTableData() {
             deleteBtn.textContent = 'Delete';
             deleteBtn.addEventListener('click', deleteRow);
 
+            deleteCol.append(deleteBtn);
             tableRow.append(currency_1_dashboard);
             tableRow.append(currency_2_dashboard);
-            tableRow.append(deleteBtn);
+            tableRow.append(deleteCol);
             dashboardBody.append(tableRow);
         })
     }
