@@ -22,7 +22,8 @@
         <h4 class="text-center text-muted" id="currency-rate-display"></h4>
         <form id="currency-form" class="row mx-auto w-75">
             <div class="col">
-                <select class="form-select" id="currency_1" data-live-search="true" data-live-search-style="startsWith"
+                <input class="form-control" id="currency_1" list="currency1Options" placeholder="Type to search...">
+                <datalist id="currency1Options"  data-live-search="true" data-live-search-style="startsWith"
                     aria-label="Default select example">
                     <option selected>Select a Currency</option>
                     <option value="AED">United Arab Emirates</option>
@@ -187,14 +188,15 @@
                     <option value="ZMW">Zambian Kwacha</option>
                     <option value="ZWL">Zimbabwean Dollar</option>
 
-                </select>
+                </datalist>
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="45" aria-label="currency-val_1"
+                <input type="text" class="form-control" placeholder="0" aria-label="currency-val_1"
                     id="currency-val_1">
             </div>
             <div class="col">
-                <select class="form-select" id="currency_2" data-live-search="true" data-live-search-style="startsWith"
+                <input class="form-control" id="currency_2" list="currency2Options" placeholder="Type to search...">
+                <datalist id="currency2Options"  data-live-search="true" data-live-search-style="startsWith"
                     aria-label="Default select example">
                     <option selected>Select a Currency</option>
                     <option value="AED">United Arab Emirates</option>
@@ -359,7 +361,7 @@
                     <option value="ZMW">Zambian Kwacha</option>
                     <option value="ZWL">Zimbabwean Dollar</option>
 
-                </select>
+                </datalist>
             </div>
             <div class="col border-bottom">
                 <h4 id="currency-val_2" class="text-center"></h4>
