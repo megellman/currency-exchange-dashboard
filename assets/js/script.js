@@ -66,6 +66,9 @@ saveBtn.addEventListener('click', () => {
         localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
     } else {
         dashboardData = JSON.parse(localStorage.getItem('dashboardData'));
+        console.log(dashboardData.length);
+        // only have a max of 5 saved currencies
+        if(dashboardData.length >= 5) dashboardData.shift();
         dashboardData.push(currencyData);
         localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
     }
@@ -85,7 +88,7 @@ saveBtn.addEventListener('click', () => {
 // click on saved currency comparisons to load them on the form
 dashboardBody.addEventListener('click', function (e) {
     e.stopPropagation();
-    
+
     // stops delete button from triggering this function
     if(e.target.textContent === 'Delete') return; 
 
