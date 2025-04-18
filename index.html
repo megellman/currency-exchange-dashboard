@@ -17,9 +17,9 @@
             </h1>
         </header>
     </div>
-    <div class="d-flex flex-column justify-content-center" style="height: 100vh;">
-
-        <form id="currency-form" class="row mx-auto w-75 mt-5">
+    <div class="d-flex flex-column justify-content-evenly" >
+        <h4 class="text-center text-muted" id="currency-rate-display"></h4>
+        <form id="currency-form" class="row mx-auto w-75">
             <div class="col">
                 <select class="form-select" id="currency_1" data-live-search="true" data-live-search-style="startsWith"
                     aria-label="Default select example">
@@ -373,9 +373,7 @@
             </div>
         </form>
 
-        <h4 class="text-center text-muted mt-4" id="currency-rate-display"></h4>
-
-        <table id="exchange-rate-dashboard" class="flex-grow-1 table mx-auto w-75 mt-2" style="visibility: hidden;">
+        <table id="exchange-rate-dashboard" class=" table mx-auto w-75 mt-2" style="visibility: hidden;">
             <thead>
                 <tr>
                     <th scope="col">Currency 1</th>

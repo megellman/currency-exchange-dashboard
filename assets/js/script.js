@@ -77,7 +77,7 @@ saveBtn.addEventListener('click', () => {
 
     let tableRow = document.createElement('tr');
 
-
+    
     let currency_1_dashboard = document.createElement('td');
     let currency_2_dashboard = document.createElement('td');
     let deleteBtn = document.createElement('button');
