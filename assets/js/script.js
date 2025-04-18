@@ -163,6 +163,9 @@ switchBtn.addEventListener('click', function(e){
 
     document.getElementById('currency_1').value = currency_2;
     document.getElementById('currency_2').value = currency_1;
+
+    // if form was already filled out, this ensures val 2 is blank and form can be immediately resubmitted with swapped info
+    document.querySelector('#currency-val_2').textContent = 0;
 })
 
 loadTableData();
