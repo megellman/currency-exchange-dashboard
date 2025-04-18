@@ -93,7 +93,7 @@ saveBtn.addEventListener('click', () => {
     dashboardBody.append(tableRow);
 
 })
-
+// click on saved currency comparisons to load them on the form
 dashboardBody.addEventListener('click', function (e) {
     e.stopPropagation();
     let currency_1 = e.target.parentNode.children[0].textContent;
@@ -102,6 +102,9 @@ dashboardBody.addEventListener('click', function (e) {
 
     document.getElementById('currency_1').value = currency_1;
     document.getElementById('currency_2').value = currency_2;
+
+    document.querySelector('#currency-val_1').value = 0;
+    document.querySelector('#currency-val_2').textContent = 0;
 })
 
 function deleteRow(e) {
