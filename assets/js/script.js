@@ -41,7 +41,7 @@ async function getConversion(val_1, currency_2El, currency_1) {
         currency_2El.textContent = val_2;
 
         // update currency display 
-        currencyDisplay.textContent = `1 ${currency_1} = ${val_2 * conversionRate} ${currency_2}`
+        currencyDisplay.textContent = `1 ${currency_1} = ${conversionRate} ${currency_2}`
 
         // saveBtn display toggle ON
         saveBtn.setAttribute('style', 'visibility:visible');
