@@ -36,7 +36,7 @@ async function getConversion(val_1, currency_2El, currency_1) {
         let conversionRate = json.conversion_rates[currency_2];
 
         // take currency-val_1 and multiply it by conversionRate--- let this = currency_2El
-        let val_2 = val_1 * conversionRate;
+        let val_2 = (val_1 * conversionRate).toFixed(2); // rounding nearest 2 decimal
 
         // update currency-val_2 form element with val_2
         currency_2El.textContent = val_2;
