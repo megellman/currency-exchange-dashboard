@@ -42,7 +42,7 @@ async function getConversion(val_1, currency_2El, currency_1) {
         currency_2El.textContent = val_2;
 
         // update currency display 
-        currencyDisplay.textContent = `1 ${currency_1} = ${conversionRate} ${currency_2}`
+        currencyDisplay.textContent = `Current Rate: 1 ${currency_1} = ${conversionRate} ${currency_2}`
 
         // saveBtn display toggle ON
         saveBtn.setAttribute('style', 'visibility:visible');
@@ -102,6 +102,7 @@ dashboardBody.addEventListener('click', function (e) {
 
     document.querySelector('#currency-val_1').value = 0;
     document.querySelector('#currency-val_2').textContent = 0;
+    document.querySelector('#currency-rate-display').textContent = 'Current Rate: ';
 })
 
 function deleteRow(e) {
@@ -169,3 +170,16 @@ switchBtn.addEventListener('click', function(e){
 })
 
 loadTableData();
+
+// currency dropdown search
+$(document).ready(function() {
+    $('#currency_1').select2({
+      placeholder: "Select a currency",
+      allowClear: true
+    });
+
+    $('#currency_2').select2({
+      placeholder: "Select a currency",
+      allowClear: true
+    });
+  });
