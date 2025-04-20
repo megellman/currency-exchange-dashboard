@@ -45,7 +45,7 @@ async function getConversion(val_1, currency_2El, currency_1) {
         currencyDisplay.textContent = `Current Rate: 1 ${currency_1} = ${conversionRate} ${currency_2}`
 
         // saveBtn display toggle ON
-        saveBtn.setAttribute('style', 'visibility:visible');
+        saveBtn.setAttribute('style', 'display:inline');
     } catch (error) {
         console.error(error.message);
     }
