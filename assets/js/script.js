@@ -41,6 +41,8 @@ async function getConversion(val_1, currency_2El, currency_1) {
         // update currency-val_2 form element with val_2
         currency_2El.textContent = val_2;
 
+        currency_2El.parentNode.setAttribute('style', 'background-color:rgb(174, 202, 249)');
+
         // update currency display 
         currencyDisplay.textContent = `Current Rate: 1 ${currency_1} = ${conversionRate} ${currency_2}`
 
@@ -103,6 +105,7 @@ dashboardBody.addEventListener('click', function (e) {
 
     document.querySelector('#currency-val_1').setAttribute('placeholder', 0);
     document.querySelector('#currency-val_2').textContent = 0;
+
     document.querySelector('#currency-rate-display').textContent = 'Current Rate: ';
 })
 
