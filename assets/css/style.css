@@ -27,3 +27,21 @@ button, input.form-control {
     justify-content: center;
     color: blue;
 }
+
+.select2-container .select2-selection--single .select2-selection__rendered, .select2-selection__arrow{
+    display: inline !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    /* margin-right: -5px !important; */
+    position: absolute;
+    bottom: 20px;
+    right: -15px;
+
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    right: 23px !important;
+    top: 5px !important;
+}
+

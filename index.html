@@ -24,9 +24,9 @@
     </div>
     <div class="d-flex flex-column justify-content-evenly mt-3">
         <form id="currency-form" class="" >
-            <div class="row g-2 align-items-stretch">
+            <div class="row g-2">
                 <div class="col-3">
-                    <select class="h-100 form-select" id="currency_1" data-live-search="true"
+                    <select class="form-select" id="currency_1" data-live-search="true"
                         data-live-search-style="startsWith" aria-label="Default select example">
                         <option selected>Select a Currency</option>
                         <option value="AED">United Arab Emirates</option>
@@ -194,11 +194,11 @@
                     </select>
                 </div>
                 <div class="col-1">
-                    <input type="text" class="h-100 form-control" placeholder="0" aria-label="currency-val_1"
+                    <input type="text" class="text-center form-control" placeholder="0" aria-label="currency-val_1"
                         id="currency-val_1">
                 </div>
                 <div class="col-1 d-flex justify-content-center align-items-center">
-                    <button id="switch-btn" class="h-100 pt-0 w-auto p-1 btn btn-secondary" type="button">
+                    <button id="switch-btn" class="pt-0 w-auto p-1 btn btn-secondary" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-arrows" viewBox="0 0 16 16">
                             <path
@@ -207,7 +207,7 @@
                     </button>
                 </div>
                 <div class="col-3">
-                    <select class="h-100 form-select" id="currency_2" data-live-search="true"
+                    <select class="text-center align-middle form-select" id="currency_2" data-live-search="true"
                         aria-label="Default select example">
                         <option selected>Select a Currency</option>
                         <option value="AED">United Arab Emirates</option>
@@ -374,14 +374,15 @@
 
                     </select>
                 </div>
-                <div id="currency-val_2" class="col-1 mx-2 border border-dark-subtle rounded  text-center">
-
-                </div>
+                <div class="col-1 mx-2 border border-dark-subtle rounded d-flex justify-content-center align-items-center text-center">
+                    <span id="currency-val_2"></span>
+                  </div>
+                  
                 <div class="col-1 d-flex justify-content-start">
-                    <button id="convert-btn" class="h-100 btn btn-success mx-2" type="submit">
+                    <button id="convert-btn" class="btn btn-success mx-2" type="submit">
                         Convert
                     </button>
-                    <button id="save-btn" class="h-100 btn btn-success" style="display: none;" type="button">
+                    <button id="save-btn" class="btn btn-success" style="display: none;" type="button">
                         Save
                     </button>
                 </div>

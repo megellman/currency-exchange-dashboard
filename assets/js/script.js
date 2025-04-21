@@ -89,18 +89,19 @@ saveBtn.addEventListener('click', () => {
 // click on saved currency comparisons to load them on the form
 dashboardBody.addEventListener('click', function (e) {
     e.stopPropagation();
-
+    
     // stops delete button from triggering this function
     if(e.target.textContent === 'Delete') return; 
 
     let currency_1 = e.target.parentNode.children[0].textContent;
     let currency_2 = e.target.parentNode.children[1].textContent;
 
-
     document.getElementById('currency_1').value = currency_1;
+    $('#currency_1').trigger('change');
     document.getElementById('currency_2').value = currency_2;
+    $('#currency_2').trigger('change');
 
-    document.querySelector('#currency-val_1').value = 0;
+    document.querySelector('#currency-val_1').setAttribute('placeholder', 0);
     document.querySelector('#currency-val_2').textContent = 0;
     document.querySelector('#currency-rate-display').textContent = 'Current Rate: ';
 })
